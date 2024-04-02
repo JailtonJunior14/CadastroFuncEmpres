@@ -13,15 +13,14 @@ namespace CadastroFuncEmpres
             
         {
             double contsal = 0;
-            int func;
+            string func;
             double salario;
 
-            Console.WriteLine("Numero de funcionario que serão cadastrados:");
-            func = int.Parse(Console.ReadLine());
+            Console.WriteLine("Deseja iniciar? S/N");
+            func = Console.ReadLine().ToLower();
             int cont = 0;
-            func = "S"
 
-            while (func = "s")
+            while (func == "s")
             {
                 Console.WriteLine("Informe a forma de contratação: Assalariado(A), Comissionado(C), Horista(H)");
                 string contrato = Console.ReadLine().ToLower();
@@ -34,7 +33,8 @@ namespace CadastroFuncEmpres
                         double desc = double.Parse(Console.ReadLine());
                         salario = (sal - desc);
                         Console.WriteLine("O salario e: " + salario);
-                        //contsal = contsal + salario;
+                        contsal += salario;
+                        cont ++;
                         break;
                     case "c":
                         Console.WriteLine("Informe a quantidade de produtos: ");
@@ -43,24 +43,32 @@ namespace CadastroFuncEmpres
                         double comi = double.Parse(Console.ReadLine());
                         salario = (produto * comi);
                         Console.WriteLine("O salario e: " + salario);
-                        //contsal = contsal + salario;
+                        contsal += salario;
+                        cont++;
                         break;
                     case "h":
                         Console.WriteLine("Informe o valor da hora: ");
                         double vhora = double.Parse(Console.ReadLine());
                         Console.WriteLine("Informe a quantidade de horas trabalhadas: ");
                         double qhora = double.Parse(Console.ReadLine());
-                        sal = vhora * qhora;
-                        //contsal = contsal + sal;
+                        salario = vhora * qhora;
+                        Console.WriteLine("O salario e: " + salario);
+                        contsal += salario;
+                        cont++;
                         break;
                     default:
                         Console.WriteLine("Opção invalida!");
                         break;
-                        contsal = contsal + sal;
+                        cont++;
+
 
                 }
-                Console.WriteLine(contsal);
+                Console.WriteLine("Deseja Continuar? S/N");
+                func = Console.ReadLine().ToLower();
             }
+            Console.WriteLine("Total folha de pagamento: " + contsal.ToString("C") );
+            Console.WriteLine("Numeros de funcionarios: " + cont);
+            Console.WriteLine("Media salarial: " + (contsal / cont).ToString("C"));
 
             Console.ReadKey();
         }
